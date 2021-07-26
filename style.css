@@ -1,31 +1,117 @@
 :root{
     --primary: #f393fd;
-    --bg: rgb(224, 217, 217); 
+    --primary-lighten: #f5b7fc;
+    --primary-dark: #af2cbc;
+    --primary-darkest: #71067b;
+    --bg: rgb(235, 217, 217); 
     --shadow: 2px 0 8px rgba(0,0,0,.7);
-    --corners: 4px
+    --corners: 5px;
+    --text-color: #050505;
+    --dark: #3a3838;
+    --dark-lighten: #504c4c;
+    --light: rgb(253,253,253);
 }
 
 body{
     background-color: var(--bg);
+    font-family: 'Permanent Marker', cursive;
+    font-size: 16pt;
+    color: var(--primary-dark);
 }
 
 header{
     margin: 3em 0;
 }
 
-.logo-container{
-    width: 50%;
-    margin: auto;
-    filter: drop-shadow(var(--shadow));
-}
-
-main{
-    width: 50%;
-    margin: auto;
-}
-
 img{
     max-width: 100%;
+}
+
+form{
+    margin: 0;
+}
+
+input{
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid var(--dark);
+    outline: none;
+    font-size: 14pt;
+}
+
+button{
+    background-color: var(--primary);
+    color: var(--light);
+    border: 1px solid var(--primary-dark);
+    border-radius: var(--corners);
+    box-shadow: var(--shadow);
+    text-transform: uppercase;
+    transition: all .2s ease;
+    cursor: pointer;
+    padding: 1em;
+}
+
+button:hover{
+    background-color: var(--primary-dark);
+    border-color: var(--dark);
+}
+
+.game-container{
+    height: 300px;
+}
+
+.pump{
+    margin-top: 80px;
+    height: 130px;
+    width: 180px;
+    position: relative;
+    align-self: flex-end;
+}
+
+
+.handle{
+    height: 10px;
+    width: 80px;
+    background-color: var(--dark-lighten);
+    position: absolute;
+    top: -80px;
+    left: 50px;
+    display: flex;
+    justify-content: center;
+    transition: all .05s linear;
+    z-index: 1;
+}
+
+
+.handle::before{
+    content: " ";
+    background-color: var(--dark-lighten);
+    width: 10px;
+    height: 80px;
+    display: block;
+}
+
+.pump:active .handle{
+    top: -20px;
+}
+
+.pump-box{
+    background-color: var(--primary-lighten);
+    height: 130px;
+    width: 180px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    z-index: 2;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+}
+.pump-box span{
+    background-color: antiquewhite;
+    padding: .5em;
+    border-radius: 2px;
 }
 
 .balloon{
@@ -33,15 +119,98 @@ img{
     width: 100px;
     background-color: blue;
     border-radius: 50%;
+    transition: all .2s ease;
+    animation: balloon-float 5s ease-in-out infinite;
+    align-self: flex-end;
+    margin: 0 auto;
+    box-shadow: inset -10px -10px 12px rgba(255, 255, 255, 0.3), inset 10px 10px 12px rgba(255, 255, 255, 0.3);
+    background: linear-gradient(-45deg, #430101 0%, #fa1e01 60%, #ff0000 80%, #ffffff 100%);
+}
+
+.balloon.green{
+    filter: hue-rotate(130deg);
+}
+.balloon.blue{
+    filter: hue-rotate(225deg);
+}
+.balloon.purple{
+    filter: hue-rotate(285deg);
+}
+.balloon.pink{
+    filter: hue-rotate(325deg);
+}
+
+@keyframes balloon-float{
+    0%,100% {
+        transform: translateY(-25px) rotate(5deg);
+    }
+    50%{
+        transform: translateY(0px) rotate(-5deg);
+    }
+}
+
+.container{
+     width: 50%;
+    margin: auto;
 }
 
 .card{
-    background-color: white;
+    background-color: var(--light);
     padding: 1em;
     box-shadow: var(--shadow);
     border-radius: var(--corners);
 }
 
+.shadow{
+    filter: drop-shadow(var(--shadow));
+}
+
+.bg-dark{
+    background-color: var(--primary);
+}
+.bg-dark-lighten{
+    background-color: var(--dark-lighten);
+}
+.text-light{
+    color: var(--light);
+}
+
+.btn-dark{
+    background-color: var(--primary-dark);
+    border-color: var(--primary-darkest);
+}
+.btn-dark:hover{
+    background-color: var(--primary-darkest);
+}
+
+.d-flex{
+    display: flex;
+    align-items: center;
+}
+.d-flex.space-between{
+    justify-content: space-between;
+}
+.d-flex.space-around{
+    justify-content: space-around;
+}
+.mt-1{
+    margin-top: .5em;
+}
+.mt-2{
+    margin-top: 1em;
+}
+.mt-3{
+    margin-top: 1.5em;
+}
+.mb-1{
+    margin-bottom: .5em;
+}
+.mb-2{
+    margin-bottom: 1em;
+}
+.mb-3{
+    margin-bottom: 1.5em;
+}
 
 
 
